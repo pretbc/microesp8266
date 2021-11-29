@@ -1,0 +1,105 @@
+boot_versions:
+  - boot0: &boot0
+      name: 'boot_v1.1'
+      value: 'old'
+  - boot1: &boot1
+      name: 'boot_v1.2+'
+      value: 'new'
+  - boot2: &boot2
+      name: 'none'
+      value: 'none'
+
+bins:
+  - bin0: &bin0
+      name: 'eagle.flash.bin+eagle.irom0text.bin'
+      value: 0
+  - bin1: &bin1
+      name: 'user1.bin'
+      value: 1
+  - bin2: &bin2
+      name: 'user2.bin'
+      value: 2
+
+spi_speeds:
+  - spispeed0: &spispeed0
+      name: '20MHz'
+      value: 20
+  - spispeed0: &spispeed1
+      name: '26.7MHz'
+      value: 26.7
+  - spispeed0: &spispeed2
+      name: '40MHz'
+      value: 40
+  - spispeed0: &spispeed3
+      name: '80MHz'
+      value: 80
+
+spi_modes:
+  - spimode0: &spimode0
+      name: 'QIO'
+      value: 'QIO'
+  - spimode1: &spimode1
+      name: 'QOUT'
+      value: 'QOUT'
+  - spimode2: &spimode2
+      name: 'DIO'
+      value: 'DIO'
+  - spimode3: &spimode3
+      name: 'DOUT'
+      value: 'DOUT'
+
+spi_sizes:
+  - spisize0: &spisize0
+      name: 'size: 512KB (ota map: 256KB + 256KB)'
+      value: 0
+  - spisize1: &spisize1
+      name: 'size: 1024KB (ota map: 512KB + 512KB)'
+      value: 2
+  - spisize2: &spisize2
+      name: 'size: 2048KB (ota map: 512KB + 512KB)'
+      value: 3
+  - spisize3: &spisize3
+      name: 'size: 4096KB (ota map: 512KB + 512KB)'
+      value: 4
+  - spisize4: &spisize4
+      name: 'size: 2048KB (ota map: 1024KB + 1024KB)'
+      value: 5
+  - spisize5: &spisize5
+      name: 'size: 4096KB (ota map: 1024KB + 1024KB)'
+      value: 6
+  - spisize6: &spisize6
+      name: 'not support ,just for compatible with nodeMCU board'
+      value: null
+  - spisize7: &spisize7
+      name: 'size: 8192KB (ota map: 1024KB + 1024KB)'
+      value: 8
+  - spisize8: &spisize8
+      name: 'size: 16384KB (ota map: 1024KB + 1024KB)'
+      value: 9
+
+
+### Custom configs below
+
+deafult0config:
+  boot:
+    <<: *boot0
+  app:
+    <<: *bin0
+  speed:
+    <<: *spispeed0
+  mode:
+    <<: *spimode0
+  size:
+    <<: *spisize0
+
+boot1bin1speed1mode2size8:
+  boot:
+    <<: *boot1
+  app:
+    <<: *bin2
+  speed:
+    <<: *spispeed1
+  mode:
+    <<: *spimode2
+  size:
+    <<: *spisize8

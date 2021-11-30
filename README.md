@@ -13,7 +13,14 @@ To run this project
 7. Run `python -m main.py --<some_args>` -> please check main args to know more
 
 
-This project run with python version >= 3.7
+This project works with python version >= 3.7
 
 To check current version type:
 1. `python -V` or `python3 -V`
+
+
+Possible examples of run option:
+
+1. with custom config: `python -m main.py --custom_config my_custome_name`
+2. with args: `python -m main.py --boot 2 --bin 1 --size 3`
+3. with default args: `python -m main.py`

@@ -11,11 +11,11 @@ my_parser.add_argument('--boot', type=int, default=2,
                        help='choose boot version(0=boot_v1.1, 1=boot_v1.2+, 2=none)')
 my_parser.add_argument('--bin', type=int, default=0,
                        help='choose bin generate(0=eagle.flash.bin+eagle.irom0text.bin, 1=user1.bin, 2=user2.bin)')
-my_parser.add_argument('--speed, -b', type=int, default=2,
+my_parser.add_argument('--speed', type=int, default=2,
                        help='choose spi speed(0=20MHz, 1=26.7MHz, 2=40MHz, 3=80MHz)')
-my_parser.add_argument('--mode, -b', type=int, default=0,
+my_parser.add_argument('--mode', type=int, default=0,
                        help='choose spi mode(0=QIO, 1=QOUT, 2=DIO, 3=DOUT)')
-my_parser.add_argument('--size, -b', type=int, default=0, help="choose spi size and map:\n"
+my_parser.add_argument('--size', type=int, default=0, help="choose spi size and map:\n"
                                                                "0= 51KB( 256KB+ 256KB)\n"
                                                                "1=1024KB( 512KB+ 512KB)\n"
                                                                "2=2048KB( 512KB+ 512KB)\n"
@@ -26,7 +26,7 @@ my_parser.add_argument('--size, -b', type=int, default=0, help="choose spi size 
                                                                "just for compatible with nodeMCU board\n"
                                                                "7=8192KB(1024KB+1024KB)\n"
                                                                "8=16384KB(1024KB+1024KB)\n")
-my_parser.add_argument('--custom_config, -b', type=str, default=None, help='custom configuration name')
+my_parser.add_argument('--custom_config', type=str, default=None, help='custom configuration name')
 
 if __name__ == '__main__':
     args = my_parser.parse_args()

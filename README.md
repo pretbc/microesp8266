@@ -10,7 +10,7 @@ To run this project
 4. Create venv -> `python3.9 -m venv <name_of_virtualenv>`
 5. Enter venv -> `source <name_of_virtualenv>/bin/activate`
 6. Install requirements -> `pip install -r requirements.txt`
-7. Run `python -m main.py --<some_args>` -> please check main args to know more
+7. Run `python -m main -h` to get help regarding possible arguments
 
 
 This project works with python version >= 3.7
@@ -21,6 +21,6 @@ To check current version type:
 
 Possible examples of run option:
 
-1. with custom config: `python -m main.py --custom_config my_custome_name`
-2. with args: `python -m main.py --boot 2 --bin 1 --size 3`
-3. with default args: `python -m main.py`
+1. with custom config: `python -m main --custom_config my_custome_name`
+2. with args: `python -m main --boot 2 --bin 1 --size 3`
+3. with default args: `python -m main`

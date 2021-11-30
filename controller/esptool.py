@@ -35,5 +35,5 @@ class EspTool:
         proc = sp.Popen(cmd, stderr=sp.PIPE, stdout=sp.PIPE)
         out, err = proc.communicate()
         if err:
-            raise EspToolError(f'Error while exe cmd: ' + ' '.join(cmd) + f'\nError msg: {err}')
-        logger.info(out)
+            raise EspToolError(f'Error while exe cmd: ' + ' '.join(cmd) + f'\nError msg: {err.decode()}')
+        logger.info(f'Command out:\n {out.decode()}')

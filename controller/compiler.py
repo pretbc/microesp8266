@@ -47,8 +47,9 @@ class Compiler:
             proc = sp.Popen(cmd, stderr=sp.PIPE, stdout=sp.PIPE)
             out, err = proc.communicate()
             if err:
-                raise CompilerCommandExecuteError(f'Error while exe cmd: ' + ' '.join(cmd) + f'\nError msg: {err}')
-            logger.info(out)
+                raise CompilerCommandExecuteError(
+                    f'Error while exe cmd: ' + ' '.join(cmd) + f'\nError msg: {err.decode()}')
+            logger.info(f'Command out:\n {out.decode()}')
 
     def _pre_preprocess(self):
         boot = self.configured.boot

@@ -29,6 +29,7 @@ class GenBin(abc.ABC):
                               f'Possible options:\n' + '\n'.join([f'{i}={k}' for i, k in enumerate(options)]))
         else:
             logger.debug(f'Parsed option: {option}')
+            self._options = options
             self._value = [v for v in option.values()][0]
 
     @abc.abstractmethod
@@ -40,8 +41,12 @@ class GenBin(abc.ABC):
         return self._value
 
     @property
-    def return_config(self):
-        return self._config
+    def possible_options(self):
+        return self._options
+
+    @property
+    def get_default(self):
+        return self._default
 
 
 @dataclass
@@ -115,5 +120,3 @@ class Configuration:
         self.speed = Params(SpiSpeed(speed_input).get_value)
         self.mode = Params(SpiMode(mode_input).get_value)
         self.size = Params(SpiSize(size_input).get_value)
-
-

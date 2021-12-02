@@ -9,6 +9,11 @@ def get_config(setup_name: str = None, file_path=gen_bin_yml):
     return {k: v for k, v in load_config_file(file_path).items() if k in to_load}
 
 
+def get_custom_configs_only(file_path=gen_bin_yml):
+    skip_load = ['boot_versions', 'bins', 'spi_speeds', 'spi_modes', 'spi_sizes']
+    return {k: v for k, v in load_config_file(file_path).items() if k not in skip_load}
+
+
 def load_config_file(local_file):
     with open(local_file, 'r') as f:
         return load(f, Loader=Loader)

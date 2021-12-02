@@ -63,10 +63,11 @@ class Compiler:
     def run(self, boot_input: int = None, bin_input: int = None, speed_input: int = None, mode_input: int = None,
             size_input: int = None, load_config: str = None):
         self._purge_upgrade_dir()
+        logger.debug(f'args: {boot_input}, {bin_input}, {speed_input}, {mode_input}, {size_input}, {load_config}')
         if load_config:
             logger.info(f'Loading custom config: {load_config}')
             self.configured.load_custom_config(load_config)
-        if load_config is None:
+        else:
             logger.info(f'Parsing given data config')
             self.configured.parse_args(boot_input, bin_input, speed_input, mode_input, size_input)
         self._pre_preprocess()

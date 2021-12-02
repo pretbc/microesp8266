@@ -24,3 +24,4 @@ Possible examples of run option:
 1. with custom config: `python -m main --custom_config my_custome_name`
 2. with args: `python -m main --boot 2 --bin 1 --size 3`
 3. with default args: `python -m main`
+4. to use GUI version: `python -m main --gui true`

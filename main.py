@@ -1,8 +1,11 @@
 import argparse
 
+from PyQt6.QtWidgets import QApplication
+
 from controller.compiler import Compiler
 from controller.esptool import EspTool
 from controller.logger import MyLogger
+from gui.controllergui import MainControllerWindow
 
 logger = MyLogger(__name__, level='INFO')
 
@@ -27,20 +30,28 @@ my_parser.add_argument('--size', type=int, default=0, help="choose spi size and 
                                                                "7=8192KB(1024KB+1024KB)\n"
                                                                "8=16384KB(1024KB+1024KB)\n")
 my_parser.add_argument('--custom_config', type=str, default=None, help='custom configuration name')
+my_parser.add_argument('--gui', type=bool, default=False, help='start GUI version')
 
 if __name__ == '__main__':
     args = my_parser.parse_args()
-    logger.info('Start compiler')
-    cpr = Compiler()
-    cpr.run(
-        boot_input=args.boot,
-        bin_input=args.bin,
-        speed_input=args.speed,
-        mode_input=args.mode,
-        size_input=args.size,
-        load_config=args.custom_config
-    )
-    logger.info('Start python esptool')
-    esp = EspTool()
-    esp.run()
+    if args.gui:
+        logger.info('Start GUI version')
+        app = QApplication([])
+        window = MainControllerWindow()
+        window.show()
+        app.exec()
+    else:
+        logger.info('Start compiler')
+        cpr = Compiler()
+        cpr.run(
+            boot_input=args.boot,
+            bin_input=args.bin,
+            speed_input=args.speed,
+            mode_input=args.mode,
+            size_input=args.size,
+            load_config=args.custom_config
+        )
+        logger.info('Start python esptool')
+        esp = EspTool()
+        esp.run()
     logger.info('All done. See you next time !!!')

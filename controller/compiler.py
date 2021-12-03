@@ -4,7 +4,7 @@ import subprocess as sp
 
 from controller.errors import CompilerPreProcessError, CompilerCommandExecuteError
 from controller.genbin import Configuration
-from controller.settings import sdk_root, sdk_upgrade, sdk_user
+from controller.settings import sdk_root, sdk_upgrade
 from controller.logger import MyLogger
 
 logger = MyLogger(__name__, level='INFO')
@@ -30,7 +30,7 @@ class Compiler:
         logger.info(f'Set working dir: {self.working_dir}')
         cmd_touch = [
             f'touch',
-            f'{sdk_user}/user_main.c'
+            f'./user_main.c'
         ]
         cmd_make = [
             f'make',

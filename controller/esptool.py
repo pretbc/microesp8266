@@ -10,7 +10,7 @@ logger = MyLogger(__name__, level='INFO')
 
 
 class EspTool:
-
+    
     def __init__(self, working_dir: str = sdk_root):
         self.working_dir = working_dir
 
